@@ -1,12 +1,58 @@
-# React + Vite
+# 🧠 Sweply
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> *Sweep your mind. Simply.*
 
-Currently, two official plugins are available:
+Sweply is a minimalist thought organizer that helps you offload mental clutter with speed and simplicity.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features (MVP)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* 📝 Instantly add thoughts
+* 🏷️ Tag with up to 3 categories (Idea, Goal, Task, Emotion, Doubt, etc.)
+* 📋 View and filter all thoughts in a clean dashboard
+* ✅ Clear thoughts once processed
+* 🔐 Secure email login for your private space
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/vbyte-dev/sweply.git
+cd sweply
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the development server
+
+```bash
+npm run dev
+```
+
+Open your browser at `http://localhost:5173`
+
+---
+
+## 🛠️ Tech Stack
+
+* ⚛️ React + Vite
+* 🎨 Tailwind CSS
+* 🗄️ Supabase (Auth + Database)
+
+---
+
+## 📄 License
+
+MIT License © [Vedhesh](https://github.com/vbyte-dev)
+
+---
+
+Made with clarity, by a solo founder 🚀
