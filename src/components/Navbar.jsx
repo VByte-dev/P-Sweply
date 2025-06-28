@@ -15,8 +15,8 @@ let Navbar = () => {
         {/* Part-1 */}
         <div className="flex items-baseline justify-between">
         <h1 className="mb-2 font-bricolage text-left text-2xl text-[#3A86FF] sm:text-2xl">Sweply</h1>
-        <i className={`ri-menu-line text-xl sm:hidden ${!isNav?'':'hidden'} motion-preset-pop motion-duration-200`} onClick={handleNav}></i>
-        <i class={`ri-close-large-line sm:hidde text-xl ${isNav?'':'hidden'} motion-preset-pop motion-duration-200`} onClick={handleNav}></i>
+        <i className={`ri-menu-line text-2xl sm:hidden ${!isNav?'':'hidden'} motion-preset-pop motion-duration-200`} onClick={handleNav}></i>
+        <i class={`ri-close-large-line sm:hidde text-2xl ${isNav?'':'hidden'} motion-preset-pop motion-duration-200`} onClick={handleNav}></i>
         </div>
         {/* Part-2 */}
         <div className={`block sm:gap-8 md:gap-14 lg:gap-20 clear-both font-space sm:flex text-md ${isNav?'':'hidden'} `}>
