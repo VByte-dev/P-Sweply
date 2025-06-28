@@ -1,2 +1,18 @@
 @import "tailwindcss";
 @plugin "tailwindcss-motion";
+
+/* Fonts */
+.font-bricolage {
+  font-family: "Bricolage Grotesque", sans-serif;
+}
+.font-space{
+  font-family: "Space Grotesk", sans-serif;
+}
+/* Boilerplate */
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  background-color: 	#F5F7FA;
+}
