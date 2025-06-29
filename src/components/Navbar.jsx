@@ -23,7 +23,7 @@ let Navbar = () => {
             onClick={handleNav}
           ></i>
           <i
-            class={`ri-close-large-line sm:hidde text-2xl ${
+            className={`ri-close-large-line sm:hidde text-2xl ${
               isNav ? "" : "hidden"
             } motion-preset-pop motion-duration-200`}
             onClick={handleNav}
