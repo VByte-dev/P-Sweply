@@ -21,7 +21,7 @@ let Drop = () => {
             name=""
             id=""
             placeholder="What’s on your mind?"
-            className="bg-white text-[#1F1F1F] h-32 w-full rounded-t-xl rounded-bl-xl py-3 px-6 font-space outline-none border-2 border-zinc-200"
+            className="bg-white text-[#1F1F1F] h-32 w-full rounded-t-xl rounded-bl-xl py-3 px-3 sm:px-6 font-space outline-none border-2 border-zinc-200"
           ></textarea>
         </div>
         {/* Tagging thought */}
