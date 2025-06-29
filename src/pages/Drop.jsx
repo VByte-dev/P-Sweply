@@ -14,7 +14,7 @@ let Drop = () => {
 
   return (
     <>
-      <div className="border-2 rounded-xl bg-zinc-50 border-zinc-200 px-6 py-6">
+      <div className="border-2 rounded-xl bg-zinc-50 border-zinc-200 px-6 py-6 text-md">
         {/* Thought tnput */}
         <div>
           <textarea
@@ -25,7 +25,7 @@ let Drop = () => {
           ></textarea>
         </div>
         {/* Tagging thought */}
-        <div className="w-full border-2 bg-white border-zinc-200 rounded-xl mt-4 py-6 px-6 flex justify-between">
+        <div className="w-full border-2 bg-white border-zinc-200 rounded-xl mt-2 py-3 px-3 sm:mt-4 sm:py-6 sm:px-6 flex justify-between overflow-auto text-sm">
           {TAGS.map((v, i, a) => (
             <h1 className="bg-zinc-200 text-[#1F1F1F] hover:bg-[#3A86FF] hover:text-[#F5F7FA] inline-block rounded py-1 px-4 m-2 font-space border-0 cursor-pointer">
               {v}

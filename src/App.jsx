@@ -17,7 +17,7 @@ let App = () => {
       >
         <Navbar />
       </div>
-      <main className="mt-20 mx-80">
+      <main className="mt-24 mx-8 sm:mt-32 sm:mx-20 md:mx-30 lg:mx-40 xl:mx-80">
         <Drop />
       </main>
     </>
