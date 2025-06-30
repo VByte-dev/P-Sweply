@@ -9,7 +9,7 @@ let ThoughtCard = (props) => {
       <div className="bg-zinc-50 rounded-lg border-2 border-zinc-200 px-3 py-3 my-6">
         {/* Created at */}
         <div className="flex justify-end">
-          <h1 className="font-space text-sm text-zinc-500">Created at</h1>
+          <h1 className="font-space text-sm text-zinc-500 mb-1">{created_at.slice(0, 10)}</h1>
         </div>
         {/* Thoughts */}
         <h1 className="font-space">{text}</h1>
