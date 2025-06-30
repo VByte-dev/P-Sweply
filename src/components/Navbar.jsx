@@ -10,7 +10,7 @@ let Navbar = () => {
 
   return (
     <>
-      <div className="block text-center justify-between items-center sm:flex">
+      <div className="block text-center justify-between items-baseline sm:flex ">
         {/* Part-1 */}
         <div className="flex items-baseline justify-between">
           <h1 className="mb-2 font-bricolage text-left text-2xl text-[#3a51ff] sm:text-2xl">
@@ -23,7 +23,7 @@ let Navbar = () => {
             onClick={handleNav}
           ></i>
           <i
-            className={`ri-close-large-line sm:hidde text-2xl ${
+            className={`ri-close-large-line sm:hidden text-2xl ${
               isNav ? "" : "hidden"
             } motion-preset-pop motion-duration-200`}
             onClick={handleNav}
@@ -38,7 +38,7 @@ let Navbar = () => {
           <div className="my-4">
             <Link
               to={"/drop"}
-              className="hover:text-[#3A86FF]"
+              className="hover:text-[#3a51ff]"
               onClick={handleNav}
             >
               Drop
@@ -47,7 +47,7 @@ let Navbar = () => {
           <div className="my-4">
             <Link
               to={"/flow"}
-              className="hover:text-[#3A86FF]"
+              className="hover:text-[#3a51ff]"
               onClick={handleNav}
             >
               Flow
@@ -56,7 +56,7 @@ let Navbar = () => {
           <div className="my-4">
             <Link
               to={"/archive"}
-              className="hover:text-[#3A86FF]"
+              className="hover:text-[#3a51ff]"
               onClick={handleNav}
             >
               Archive

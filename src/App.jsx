@@ -3,7 +3,7 @@ import supabase from "./lib/supabase-client";
 
 // Components
 import Navbar from "./components/Navbar";
-import Router from './pages/Router';
+import Router from "./pages/Router";
 
 let App = () => {
   console.log(supabase);

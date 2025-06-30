@@ -16,12 +16,39 @@ let Flow = () => {
     fetchThoughts();
   }, []);
 
+  // Handling clearall
+  let handleClearAll = async () => {
+    let { error } = await supabase
+      .from("thoughts")
+      .delete()
+      .eq("status", "active");
+    setThought([]);
+    if (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
-      <div className="mt-12 sm:mt-24 ">
-        {thought.map((v, i, a) => {
-          return <ThoughtCard data={v} key={i} />;
-        })}
+      <div>
+        {/* Part-1 */}
+        <div>
+          <div className="flex justify-end mt-6 sm:mt-12">
+            <button
+              className="bg-[#3A86FF] active:bg-[#3a51ff] text-white rounded inline-block px-3 text-sm py-1 mt-3 font-space"
+              onClick={handleClearAll}
+            >
+              Sweep All
+            </button>
+          </div>
+        </div>
+
+        {/* Thoughts Card */}
+        <div className="mt-0 sm:mt-10">
+          {thought.map((v, i, a) => {
+            return <ThoughtCard data={v} key={i} />;
+          })}
+        </div>
       </div>
     </>
   );

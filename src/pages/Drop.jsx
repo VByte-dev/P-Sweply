@@ -29,6 +29,9 @@ let Drop = () => {
         .select();
       if (error) {
         console.log(error);
+      } else {
+        setThoughtInput("");
+        setTagInput([]);
       }
     }
   };
@@ -53,6 +56,7 @@ let Drop = () => {
             name=""
             id="thoughtInput"
             placeholder="What’s on your mind?"
+            value={thoughtInput}
             className="bg-white text-[#1F1F1F] h-32 w-full rounded-lg  py-3 px-3 sm:px-6 font-space outline-none border-2 border-zinc-200 resize-none"
             onChange={(e) => {
               handleThought(e.target.value);
@@ -64,8 +68,10 @@ let Drop = () => {
           {TAGS.map((v, i, a) => (
             <h1
               key={i}
-              className={` text-[#1F1F1F] hover:bg-[#3A86FF] hover:text-[#F5F7FA] inline-block rounded py-1 px-4 mr-2 sm:mr-4 my-2 font-space border-0 cursor-pointer  ${
-                tagInput.includes(v) ? "bg-black text-white" : "bg-zinc-200"
+              className={`text-[#1F1F1F] inline-block rounded py-1 px-4 mr-2 sm:mr-4 my-2 font-space cursor-pointer  ${
+                tagInput.includes(v)
+                  ? "bg-black text-white border-1 border-black"
+                  : "bg-zinc-100 border-1 border-zinc-200"
               }`}
               onClick={(e) => handleTag(v)}
             >
