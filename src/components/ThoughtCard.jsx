@@ -6,7 +6,7 @@ let ThoughtCard = (props) => {
 
   return (
     <>
-      <div className="bg-zinc-50 rounded-lg border-2 border-zinc-200 px-3 py-3 my-6">
+      <div className="bg-zinc-50 rounded-lg border-2 border-zinc-200 px-3 py-3 my-6 motion-preset-focus">
         {/* Created at */}
         <div className="flex justify-end">
           <h1 className="font-space text-sm text-zinc-500 mb-1">{created_at.slice(0, 10)}</h1>
@@ -21,8 +21,8 @@ let ThoughtCard = (props) => {
         </div>
         {/* Clear */}
         <div>
-          <button className="bg-red-500 text-white rounded w-full py-1 mt-3 font-space">
-            Clear
+          <button className="bg-green-500 text-white rounded w-full py-1 mt-3 font-space">
+            Sweep
           </button>
         </div>
       </div>
