@@ -46,14 +46,14 @@ let Drop = () => {
 
   return (
     <>
-      <div className="rounded-xl bg-zinc-50 border-2 border-zinc-200  px-6 py-6 text-md">
+      <div className="rounded-xl bg-zinc-50 border-2 border-zinc-200  px-6 py-6 text-md mt-24 sm:mt-32 ">
         {/* Thought tnput */}
         <div>
           <textarea
             name=""
             id="thoughtInput"
             placeholder="What’s on your mind?"
-            className="bg-white text-[#1F1F1F] h-32 w-full rounded-xl  py-3 px-3 sm:px-6 font-space outline-none border-2 border-zinc-200 resize-none"
+            className="bg-white text-[#1F1F1F] h-32 w-full rounded-lg  py-3 px-3 sm:px-6 font-space outline-none border-2 border-zinc-200 resize-none"
             onChange={(e) => {
               handleThought(e.target.value);
             }}

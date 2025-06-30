@@ -1,11 +1,9 @@
 import React from "react";
 import supabase from "./lib/supabase-client";
 
-// Pages
-import Drop from "./pages/Drop";
-
 // Components
 import Navbar from "./components/Navbar";
+import Router from './pages/Router';
 
 let App = () => {
   console.log(supabase);
@@ -17,8 +15,8 @@ let App = () => {
       >
         <Navbar />
       </div>
-      <main className="mt-24 mx-8 sm:mt-32 sm:mx-20 md:mx-30 lg:mx-40 xl:mx-80">
-        <Drop />
+      <main className="mx-8 sm:mx-20 md:mx-30 lg:mx-40 xl:mx-80">
+        <Router></Router>
       </main>
     </>
   );

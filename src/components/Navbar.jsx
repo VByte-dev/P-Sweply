@@ -36,17 +36,29 @@ let Navbar = () => {
           } `}
         >
           <div className="my-4">
-            <Link to={"/drop"} className="hover:text-[#3A86FF]">
+            <Link
+              to={"/drop"}
+              className="hover:text-[#3A86FF]"
+              onClick={handleNav}
+            >
               Drop
             </Link>
           </div>
           <div className="my-4">
-            <Link to={"/flow"} className="hover:text-[#3A86FF]">
+            <Link
+              to={"/flow"}
+              className="hover:text-[#3A86FF]"
+              onClick={handleNav}
+            >
               Flow
             </Link>
           </div>
           <div className="my-4">
-            <Link to={"/archive"} className="hover:text-[#3A86FF]">
+            <Link
+              to={"/archive"}
+              className="hover:text-[#3A86FF]"
+              onClick={handleNav}
+            >
               Archive
             </Link>
           </div>
@@ -57,6 +69,7 @@ let Navbar = () => {
             className={`mt-2 w-full font-space bg-[#3A86FF] text-[#F5F7FA] px-4 py-1 rounded active:bg-[#3a51ff] sm:flex ${
               isNav ? "" : "hidden"
             }`}
+            onClick={handleNav}
           >
             SignIn
           </button>
