@@ -31,6 +31,7 @@ let Flow = () => {
     } else {
       setThought(data);
     }
+    console.log(thought);
   };
   useEffect(() => {
     fetchThoughts();
@@ -40,7 +41,7 @@ let Flow = () => {
   let handleClearAll = async () => {
     let { error } = await supabase
       .from("thoughts")
-      .delete()
+      .update({ status: "archived" })
       .eq("status", "active");
     setThought([]);
     if (error) {
@@ -55,7 +56,7 @@ let Flow = () => {
         <div className="flex mt-6 sm:mt-12 justify-end gap-4">
           {/* Filter */}
           <div>
-            <button className="bg-[#3A86FF] active:bg-[#3a51ff] text-white rounded  px-3 text-sm py-1 mt-3 font-space">
+            <button className="bg-[#3A86FF] active:bg-[#3a51ff] text-white rounded  px-3 text-sm py-1 mt-3 font-space border">
               Focus
             </button>
           </div>
@@ -71,13 +72,24 @@ let Flow = () => {
           </div>
         </div>
 
-        {/* Thoughts Card */}
+        {/* Thoughts card */}
         <div className="mt-0 sm:mt-10">
           {thought.map((v, i, a) => {
             return (
               <ThoughtCard data={v} refreshThoughts={fetchThoughts} key={i} />
             );
           })}
+        </div>
+        {/* Empty thought placeholder*/}
+        <div className="bg-zinc-50 rounded-lg border-2 border-zinc-200 px-3 py-3 sm:px-4 sm:py-4 my-6 motion-preset-focus mt-16">
+          <h1 className="text-zinc-600 text-center my-2 font-bricolage ">
+            🧹 All clear. Drop in your next thought.
+          </h1>
+          <h1 className="text-zinc-600 text-center my-2 font-space ">
+            {" "}
+            This is your live space. Drop what’s on your mind, reflect, and
+            sweep them away when you’re ready.
+          </h1>
         </div>
       </div>
     </>

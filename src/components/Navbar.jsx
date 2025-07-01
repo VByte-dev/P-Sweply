@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 let Navbar = () => {
   // Handling Navbar
@@ -31,36 +31,48 @@ let Navbar = () => {
         </div>
         {/* Part-2 */}
         <div
-          className={`block sm:gap-8 md:gap-14 lg:gap-20 clear-both font-space sm:flex text-md ${
+          className={`block sm:gap-8 md:gap-14 lg:gap-20 font-space sm:flex text-md ${
             isNav ? "" : "hidden"
           } `}
         >
           <div className="my-4">
-            <Link
+            <NavLink
               to={"/drop"}
-              className="hover:text-[#3a51ff]"
+              className={({ isActive }) =>
+                isActive
+                  ? "block w-full sm:inline-block sm:w-auto text-center font-space bg-zinc-100 border border-zinc-200 px-6 py-1 rounded hover:bg-zinc-100 active:bg-zinc-100"
+                  : " block w-fullbg-white  px-6 py-1 rounded border-1 border-white hover:bg-zinc-100 active:bg-zinc-100"
+              }
               onClick={handleNav}
             >
               Drop
-            </Link>
+            </NavLink>
           </div>
           <div className="my-4">
-            <Link
+            <NavLink
               to={"/flow"}
-              className="hover:text-[#3a51ff]"
+              className={({ isActive }) =>
+                isActive
+                  ? "block w-full sm:inline-block sm:w-auto text-center font-space bg-zinc-100 border border-zinc-200 px-6 py-1 rounded hover:bg-zinc-100 active:bg-zinc-100"
+                  : " block w-fullbg-white  px-6 py-1 rounded border-1 border-white hover:bg-zinc-100 active:bg-zinc-100"
+              }
               onClick={handleNav}
             >
               Flow
-            </Link>
+            </NavLink>
           </div>
           <div className="my-4">
-            <Link
+            <NavLink
               to={"/archive"}
-              className="hover:text-[#3a51ff]"
+              className={({ isActive }) =>
+                isActive
+                  ? "block w-full sm:inline-block sm:w-auto text-center font-space bg-zinc-100 border border-zinc-200 px-6 py-1 rounded hover:bg-zinc-100 active:bg-zinc-100"
+                  : "block w-full bg-white  px-6 py-1 rounded border-1 border-white hover:bg-zinc-100 active:bg-zinc-100"
+              }
               onClick={handleNav}
             >
               Archive
-            </Link>
+            </NavLink>
           </div>
         </div>
         {/* Part-3 */}
