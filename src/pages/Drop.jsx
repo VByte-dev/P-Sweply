@@ -1,7 +1,19 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import supabase from "../lib/supabase-client";
 
 let Drop = () => {
+  // Tag list
+  const TAGS = [
+    "Idea",
+    "Goal",
+    "Reflection",
+    "Doubt",
+    "Emotion",
+    "Inspiration",
+    "Task",
+    "Random",
+  ];
+
   // Handling thoughts
   let [thoughtInput, setThoughtInput] = useState("");
   let handleThought = (v) => {
@@ -22,7 +34,6 @@ let Drop = () => {
   // Handling drop
   let handleDrop = async () => {
     if (thoughtInput !== "" && tagInput.length !== 0) {
-      console.log(thoughtInput, tagInput);
       let { data, error } = await supabase
         .from("thoughts")
         .insert([{ text: thoughtInput, tags: tagInput, status: "active" }])
@@ -35,17 +46,6 @@ let Drop = () => {
       }
     }
   };
-
-  // Tag list
-  const TAGS = [
-    "Idea",
-    "Goal",
-    "Reflection",
-    "Doubt",
-    "Emotion",
-    "Inspiration",
-    "Task",
-  ];
 
   return (
     <>

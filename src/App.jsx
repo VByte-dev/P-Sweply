@@ -6,7 +6,6 @@ import Navbar from "./components/Navbar";
 import Router from "./pages/Router";
 
 let App = () => {
-  console.log(supabase);
   return (
     <>
       <div

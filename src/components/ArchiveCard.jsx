@@ -1,24 +1,8 @@
-import React, { useState } from "react";
-import supabase from "../lib/supabase-client";
+import React from "react";
 
-let ThoughtCard = (props) => {
-  // Handle Clear
-  let handleClear = async () => {
-    console.log("Clearing...");
-    let { error } = await supabase
-      .from("thoughts")
-      .update({ status: "archived" })
-      .eq("text", text);
-
-    if (error) {
-      console.log(error);
-    } else {
-      props.refreshThoughts();
-    }
-  };
-
-  // Destructuring the Data
-  let { text, tags, created_at } = props.data;
+let ArchiveCard = (props) => {
+  // Destructuring data
+  let { text, created_at, tags } = props.data;
 
   return (
     <>
@@ -42,18 +26,9 @@ let ThoughtCard = (props) => {
             </h2>
           ))}
         </div>
-        {/* Clear */}
-        <div>
-          <button
-            className="bg-[#27ae60] active:bg-[#229954] text-white rounded w-full py-1 mt-3 font-space"
-            onClick={handleClear}
-          >
-            Sweep
-          </button>
-        </div>
       </div>
     </>
   );
 };
 
-export default ThoughtCard;
+export default ArchiveCard;
