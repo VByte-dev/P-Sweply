@@ -32,7 +32,7 @@ let Archive = () => {
     <>
       <div>
         {loading ? (
-          <h1 className="font-bricolage border-1 border-zinc-200 bg-zinc-100 rounded text-center py-2 text-zinc-500 mt-16">🧹 Loading your saved thoughts…</h1>
+          <h1 className="font-bricolage border-1 border-zinc-200 bg-zinc-100 rounded text-center py-6 text-zinc-500 mt-16">🧹 Loading your saved thoughts…</h1>
         ) : (
           <div>
             {/* Decider - Empty placeholder or Archive card*/}
@@ -44,7 +44,7 @@ let Archive = () => {
                 </h1>
                 <h1 className="text-zinc-600 text-center my-2 font-space ">
                   Thoughts you sweep from your flow are kept here - so you can
-                  look back, reflect, and see your journey over time
+                  look back, reflect, and see your journey over time.
                 </h1>
               </div>
             ) : (
