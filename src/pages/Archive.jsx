@@ -7,6 +7,8 @@ import ArchiveCard from "../components/ArchiveCard";
 let Archive = () => {
   // Fetching archived data from the DB
   let [thought, setThought] = useState([]);
+  let [loading, setLoading] = useState(true);
+
   let fetchThoughts = async () => {
     console.log("Fetching...");
     let { data, error } = await supabase
@@ -18,7 +20,7 @@ let Archive = () => {
       console.log(error);
     } else {
       setThought(data);
-      console.log(data);
+      setLoading(false);
     }
   };
 
@@ -29,23 +31,32 @@ let Archive = () => {
   return (
     <>
       <div>
-        {/* Archive card */}
-        <div className="mt-12">
-          {thought.map((v, i, a) => (
-            <ArchiveCard data={v} key={i} />
-          ))}
-        </div>
-
-        {/* Empty thought placeholder*/}
-        <div className="bg-zinc-50 rounded-lg border-2 border-zinc-200 px-3 py-3 sm:px-4 sm:py-4 my-6 motion-preset-focus mt-16">
-          <h1 className="text-zinc-600 text-center my-2 font-bricolage ">
-            🧹 Your archive is empty.
-          </h1>
-          <h1 className="text-zinc-600 text-center my-2 font-space ">
-            Thoughts you sweep from your flow are kept here - so you can look
-            back, reflect, and see your journey over time
-          </h1>
-        </div>
+        {loading ? (
+          <h1 className="font-bricolage border-1 border-zinc-200 bg-zinc-100 rounded text-center py-2 text-zinc-500 mt-16">🧹 Loading your saved thoughts…</h1>
+        ) : (
+          <div>
+            {/* Decider - Empty placeholder or Archive card*/}
+            {thought.length === 0 ? (
+              // Empty placeholder
+              <div className="bg-zinc-50 rounded-lg border-2 border-zinc-200 px-3 py-3 sm:px-4 sm:py-4 my-6 motion-preset-focus mt-16">
+                <h1 className="text-zinc-600 text-center my-2 font-bricolage ">
+                  🧹 Your archive is empty.
+                </h1>
+                <h1 className="text-zinc-600 text-center my-2 font-space ">
+                  Thoughts you sweep from your flow are kept here - so you can
+                  look back, reflect, and see your journey over time
+                </h1>
+              </div>
+            ) : (
+              // Archive Card
+              <div className="mt-16">
+                {thought.map((v, i, a) => (
+                  <ArchiveCard data={v} key={i} />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </>
   );

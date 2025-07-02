@@ -30,9 +30,7 @@ let ThoughtCard = (props) => {
           </h1>
         </div>
         {/* Thoughts */}
-        <h1 className="font-bricolage text-zinc-600 text-center mt-2">
-          {text}
-        </h1>
+        <h1 className="font-space text-center mt-2">{text}</h1>
         {/* Tags */}
         <div className="text-md font-space text-sm">
           {tags.map((v, i, a) => (

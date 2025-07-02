@@ -3,22 +3,12 @@ import supabase from "../lib/supabase-client";
 
 // Components
 import ThoughtCard from "../components/ThoughtCard";
+// import FocusCard from "../components/FocusCard";
 
 let Flow = () => {
-  // Tag list
-  const TAGS = [
-    "Idea",
-    "Goal",
-    "Reflection",
-    "Doubt",
-    "Emotion",
-    "Inspiration",
-    "Task",
-    "Random",
-  ];
-
   // Fetching active data from the DB
   let [thought, setThought] = useState([]);
+  let [loading, setLoading] = useState(true);
 
   let fetchThoughts = async () => {
     let { data, error } = await supabase
@@ -30,12 +20,18 @@ let Flow = () => {
       console.log(error);
     } else {
       setThought(data);
+      setLoading(false);
     }
-    console.log(thought);
   };
   useEffect(() => {
     fetchThoughts();
   }, []);
+
+  // // Handling filtered tags - The thoughts tags from the focuscard
+  // let [fTags, setFTags] = useState([]);
+  // let handleFilTags = (v) => {
+  //   setFTags(v);
+  // }
 
   // Handling clearall
   let handleClearAll = async () => {
@@ -44,6 +40,7 @@ let Flow = () => {
       .update({ status: "archived" })
       .eq("status", "active");
     setThought([]);
+
     if (error) {
       console.log(error);
     }
@@ -54,14 +51,13 @@ let Flow = () => {
       <div>
         {/* Part-1 */}
         <div className="flex mt-6 sm:mt-12 justify-end gap-4">
-          {/* Filter */}
+          {/* Focus btn*/}
           <div>
             <button className="bg-[#3A86FF] active:bg-[#3a51ff] text-white rounded  px-3 text-sm py-1 mt-3 font-space border">
               Focus
             </button>
           </div>
-
-          {/* Sweep All */}
+          {/* Sweep All btn */}
           <div className="">
             <button
               className="bg-[#27ae60] active:bg-[#229954] text-white rounded px-3 text-sm py-1 mt-3 font-space"
@@ -72,24 +68,48 @@ let Flow = () => {
           </div>
         </div>
 
-        {/* Thoughts card */}
-        <div className="mt-0 sm:mt-10">
-          {thought.map((v, i, a) => {
-            return (
-              <ThoughtCard data={v} refreshThoughts={fetchThoughts} key={i} />
-            );
-          })}
-        </div>
-        {/* Empty thought placeholder*/}
-        <div className="bg-zinc-50 rounded-lg border-2 border-zinc-200 px-3 py-3 sm:px-4 sm:py-4 my-6 motion-preset-focus mt-16">
-          <h1 className="text-zinc-600 text-center my-2 font-bricolage ">
-            🧹 All clear. Drop in your next thought.
-          </h1>
-          <h1 className="text-zinc-600 text-center my-2 font-space ">
-            {" "}
-            This is your live space. Drop what’s on your mind, reflect, and
-            sweep them away when you’re ready.
-          </h1>
+        {/* Focus card
+        <div className="mt-8">
+          <FocusCard fTags={fTags} />
+        </div> */}
+
+        {/* Part-2 */}
+        <div>
+          {loading ? (
+            <h1 className="font-bricolage border-1 border-zinc-200 bg-zinc-100 rounded text-center py-2 text-zinc-500 mt-16">
+              🧠 Loading your latest thoughts…
+            </h1>
+          ) : (
+            <div>
+              {/* Decider - Empty placeholder or Flow card*/}
+              {thought.length === 0 ? (
+                // Empty placeholder
+                <div className="bg-zinc-50 rounded-lg border-2 border-zinc-200 px-3 py-3 sm:px-4 sm:py-4 my-6 motion-preset-focus mt-16">
+                  <h1 className="text-zinc-600 text-center my-2 font-bricolage ">
+                    🧹 All clear. Drop in your next thought.
+                  </h1>
+                  <h1 className="text-zinc-600 text-center my-2 font-space ">
+                    {" "}
+                    This is your live space. Drop what’s on your mind, reflect,
+                    and sweep them away when you’re ready.
+                  </h1>
+                </div>
+              ) : (
+                // Flow card
+                <div className="mt-0 sm:mt-10">
+                  {thought.map((v, i, a) => {
+                    return (
+                      <ThoughtCard
+                        data={v}
+                        refreshThoughts={fetchThoughts}
+                        key={i}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </>
