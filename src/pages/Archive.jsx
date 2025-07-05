@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 import ArchiveCard from "../components/ArchiveCard";
 
 let Archive = (props) => {
-  // Is auth
-  let { isAuth } = props;
-  console.log("Drop: ", isAuth);
+  // Destructuring the props
+  let { isAuth, userId } = props;
+  // console.log("Archive: ", isAuth);
 
   let navigateTo = useNavigate();
   useEffect(() => {
@@ -22,14 +22,14 @@ let Archive = (props) => {
   let [loading, setLoading] = useState(true);
 
   let fetchThoughts = async () => {
-    console.log("Fetching...");
     let { data, error } = await supabase
       .from("thoughts")
       .select("*")
-      .eq("status", "archived");
+      .eq("status", "archived")
+      .eq("user_id", userId);
 
     if (error) {
-      console.log(error);
+      console.log(error.message);
     } else {
       setThought(data);
       setLoading(false);

@@ -3,9 +3,9 @@ import supabase from "../lib/supabase-client";
 import { useNavigate } from "react-router-dom";
 
 let Drop = (props) => {
-  // Is auth
-  let { isAuth } = props;
-  console.log("Drop: ", isAuth);
+  // Destructuring the props
+  let { isAuth, userId } = props;
+  // console.log("Drop: ", isAuth);
 
   let navigateTo = useNavigate();
   useEffect(() => {
@@ -48,10 +48,18 @@ let Drop = (props) => {
     if (thoughtInput !== "" && tagInput.length !== 0) {
       let { data, error } = await supabase
         .from("thoughts")
-        .insert([{ text: thoughtInput, tags: tagInput, status: "active" }])
+        .insert([
+          {
+            text: thoughtInput,
+            tags: tagInput,
+            status: "active",
+            user_id: userId,
+          },
+        ])
         .select();
+
       if (error) {
-        console.log(error);
+        console.log(error.message);
       } else {
         setThoughtInput("");
         setTagInput([]);

@@ -4,12 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 // Components
 import ThoughtCard from "../components/ThoughtCard";
-// import FocusCard from "../components/FocusCard";
+// import FocusCard from "../components/FocusCard"; - Underdevelopment
 
 let Flow = (props) => {
-  // Is auth
-  let { isAuth } = props;
-  console.log("Drop: ", isAuth);
+  // Destructuring the props
+  let { isAuth, userId } = props;
+  // console.log("Flow: ", isAuth);
 
   let navigateTo = useNavigate();
   useEffect(() => {
@@ -26,10 +26,11 @@ let Flow = (props) => {
     let { data, error } = await supabase
       .from("thoughts")
       .select("*")
-      .eq("status", "active");
+      .eq("status", "active")
+      .eq("user_id", userId);
 
     if (error) {
-      console.log(error);
+      console.log(error.message);
     } else {
       setThought(data);
       setLoading(false);
@@ -39,7 +40,7 @@ let Flow = (props) => {
     fetchThoughts();
   }, []);
 
-  // // Handling filtered tags - The thoughts tags from the focuscard
+  // // Handling filtered tags - The thoughts tags from the focuscard - Underdevelopment
   // let [fTags, setFTags] = useState([]);
   // let handleFilTags = (v) => {
   //   setFTags(v);
@@ -50,11 +51,13 @@ let Flow = (props) => {
     let { error } = await supabase
       .from("thoughts")
       .update({ status: "archived" })
-      .eq("status", "active");
+      .eq("status", "active")
+      .eq("user_id", userId);
+
     setThought([]);
 
     if (error) {
-      console.log(error);
+      console.log(error.message);
     }
   };
 
@@ -113,6 +116,7 @@ let Flow = (props) => {
                     return (
                       <ThoughtCard
                         data={v}
+                        userId={userId}
                         refreshThoughts={fetchThoughts}
                         key={i}
                       />

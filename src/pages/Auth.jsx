@@ -20,11 +20,9 @@ let Auth = () => {
   let [verNotify, setVerNotify] = useState(false);
 
   let onChangeSuEmail = (v) => {
-    console.log(v.target.value);
     setSuEmail(v.target.value);
   };
   let onChangeSuPass = (v) => {
-    console.log(v.target.value);
     setSuPass(v.target.value);
   };
 
@@ -47,11 +45,9 @@ let Auth = () => {
   let [siPass, setSiPass] = useState("");
 
   let onChangeSiEmail = (v) => {
-    console.log(v.target.value);
     setSiEmail(v.target.value);
   };
   let onChangeSiPass = (v) => {
-    console.log(v.target.value);
     setSiPass(v.target.value);
   };
   let signIn = async () => {
@@ -91,7 +87,7 @@ let Auth = () => {
             } rounded px-3 py-1 cursor-pointer`}
             onClick={handleIsSignIn}
           >
-            SignIn
+            LogIn
           </h1>
         </div>
 
@@ -114,8 +110,8 @@ let Auth = () => {
                 type="text"
                 name=""
                 id=""
-                placeholder="Enter your email"
-                className="border-2 rounded-lg my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
+                placeholder="Drop in your email"
+                className="border-2 rounded-md my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
                 onChange={onChangeSuEmail}
                 value={suEmail}
               />
@@ -125,8 +121,8 @@ let Auth = () => {
                 type="text"
                 name=""
                 id=""
-                placeholder="Enter your password"
-                className="border-2 rounded-lg my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
+                placeholder="Drop in your password"
+                className="border-2 rounded-md my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
                 onChange={onChangeSuPass}
                 value={suPass}
               />
@@ -139,6 +135,16 @@ let Auth = () => {
                 SignUp
               </button>
             </div>
+            <div>
+              <h1
+                className="font-space text-blue-700 text-center text-sm mt-8 cursor-pointer"
+                onClick={() => {
+                  setIsSignUp(false);
+                }}
+              >
+                I already have an account
+              </h1>
+            </div>
           </div>
         ) : (
           <div className="rounded-xl bg-zinc-50 border-2 border-zinc-200  px-6 py-6 text-md  text-md">
@@ -147,8 +153,8 @@ let Auth = () => {
                 type="text"
                 name=""
                 id=""
-                placeholder="Enter your email"
-                className="border-2 rounded-lg my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
+                placeholder="Drop in your email"
+                className="border-2 rounded-md my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
                 onChange={onChangeSiEmail}
                 value={siEmail}
               />
@@ -158,8 +164,8 @@ let Auth = () => {
                 type="text"
                 name=""
                 id=""
-                placeholder="Enter your password"
-                className="border-2 rounded-lg my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
+                placeholder="Drop in your password"
+                className="border-2 rounded-md my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
                 onChange={onChangeSiPass}
                 value={siPass}
               />
@@ -170,8 +176,18 @@ let Auth = () => {
                 onClick={signIn}
                 value={siPass}
               >
-                SignIn
+                LogIn
               </button>
+            </div>
+            <div>
+              <h1
+                className="font-space text-blue-700 text-center text-sm mt-8 cursor-pointer"
+                onClick={() => {
+                  setIsSignUp(true);
+                }}
+              >
+                I dont't have an account
+              </h1>
             </div>
           </div>
         )}

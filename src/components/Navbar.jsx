@@ -5,9 +5,9 @@ import supabase from "../lib/supabase-client";
 let Navbar = (props) => {
   // Is auth
   let { isAuth } = props;
-  console.log("Navbar: ", props);
+  // console.log("Navbar: ", props);
 
-  // Handling Navbar
+  // Handling Navbar - Handles opening and the closing of the navbar
   let [isNav, setNav] = useState(false);
   let handleNav = () => {
     setNav((preVal) => !preVal);

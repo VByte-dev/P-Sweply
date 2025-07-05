@@ -2,23 +2,25 @@ import React, { useState } from "react";
 import supabase from "../lib/supabase-client";
 
 let ThoughtCard = (props) => {
+  // Destructuring the props
+  let { text, tags, created_at } = props.data;
+  let { userId } = props;
+
   // Handle Clear
   let handleClear = async () => {
-    console.log("Clearing...");
     let { error } = await supabase
       .from("thoughts")
       .update({ status: "archived" })
-      .eq("text", text);
+      .eq("text", text)
+      .eq("user_id", userId)
+      .eq("created_at", created_at);
 
     if (error) {
-      console.log(error);
+      console.log(error.message);
     } else {
       props.refreshThoughts();
     }
   };
-
-  // Destructuring the Data
-  let { text, tags, created_at } = props.data;
 
   return (
     <>
