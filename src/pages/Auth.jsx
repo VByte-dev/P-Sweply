@@ -60,13 +60,13 @@ let Auth = () => {
     } else {
       setSiEmail("");
       setSiPass("");
-      navigateTo("/");
+      navigateTo("/drop");
     }
   };
 
   return (
     <>
-      <div className="mt-24 sm:mt-32 sm:mx-10 lg:mx-20 xl:mx-30">
+      <div className="mt-24 sm:mt-32 sm:mx-10 lg:mx-20 xl:mx-30 selection:bg-amber-200 selection:text-black">
         {/* Is SignUp or SignIn Toggle */}
         <div className="flex justify-around my-4">
           <h1

@@ -69,7 +69,7 @@ let Drop = (props) => {
 
   return (
     <>
-      <div className="rounded-xl bg-zinc-50 border-2 border-zinc-200  px-6 py-6 text-md mt-24 sm:mt-32 ">
+      <div className="rounded-xl bg-zinc-50 border-2 border-zinc-200  px-6 py-6 text-md mt-24 sm:mt-32 selection:bg-amber-200 selection:text-black">
         {/* Thought input */}
         <div>
           <textarea

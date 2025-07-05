@@ -42,7 +42,7 @@ let Archive = (props) => {
 
   return (
     <>
-      <div>
+      <div className="selection:bg-amber-200 selection:text-black">
         {loading ? (
           <h1 className="font-bricolage border-1 border-zinc-200 bg-zinc-100 rounded text-center py-6 text-zinc-500 mt-16">
             🧹 Loading your saved thoughts…

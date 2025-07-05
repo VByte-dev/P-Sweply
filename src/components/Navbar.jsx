@@ -26,7 +26,7 @@ let Navbar = (props) => {
 
   return (
     <>
-      <div className="block text-center justify-between items-baseline sm:flex ">
+      <div className="block text-center justify-between items-baseline sm:flex selection:bg-[#00000000]">
         {/* Part-1 */}
         <div className="flex items-baseline justify-between">
           <h1 className="mb-2 font-bricolage text-left text-2xl text-[#3a51ff] sm:text-2xl">

@@ -63,15 +63,15 @@ let Flow = (props) => {
 
   return (
     <>
-      <div>
+      <div className="selection:bg-amber-200 selection:text-black">
         {/* Part-1 */}
         <div className="flex mt-6 sm:mt-12 justify-end gap-4">
-          {/* Focus btn*/}
+          {/* Focus btn
           <div>
-            <button className="bg-[#3A86FF] active:bg-[#3a51ff] text-white rounded  px-3 text-sm py-1 mt-3 font-space border">
+            <button className="bg-[#3A86FF] active:bg-[#3a51ff] text-white rounded  px-3 text-sm py-1 mt-3 font-space border"> - Underdevelopment
               Focus
             </button>
-          </div>
+          </div> */}
           {/* Sweep All btn */}
           <div className="">
             <button
