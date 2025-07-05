@@ -1,11 +1,23 @@
 import React, { useEffect, useState } from "react";
 import supabase from "../lib/supabase-client";
+import { useNavigate } from "react-router-dom";
 
 // Components
 import ThoughtCard from "../components/ThoughtCard";
 // import FocusCard from "../components/FocusCard";
 
-let Flow = () => {
+let Flow = (props) => {
+  // Is auth
+  let { isAuth } = props;
+  console.log("Drop: ", isAuth);
+
+  let navigateTo = useNavigate();
+  useEffect(() => {
+    if (isAuth === false) {
+      navigateTo("/auth");
+    }
+  }, []);
+
   // Fetching active data from the DB
   let [thought, setThought] = useState([]);
   let [loading, setLoading] = useState(true);

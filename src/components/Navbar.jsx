@@ -1,11 +1,27 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import supabase from "../lib/supabase-client";
 
-let Navbar = () => {
+let Navbar = (props) => {
+  // Is auth
+  let { isAuth } = props;
+  console.log("Navbar: ", props);
+
   // Handling Navbar
   let [isNav, setNav] = useState(false);
   let handleNav = () => {
     setNav((preVal) => !preVal);
+  };
+  // Handle signout
+  let navigateTo = useNavigate();
+  let handleSignOut = async () => {
+    let { data, error } = await supabase.auth.signOut();
+    if (error) {
+      console.log(error.message);
+    } else {
+      navigateTo("/");
+    }
+    handleNav();
   };
 
   return (
@@ -77,14 +93,27 @@ let Navbar = () => {
         </div>
         {/* Part-3 */}
         <div>
-          <button
-            className={`mt-2 w-full font-space bg-[#3A86FF] text-[#F5F7FA] px-4 py-1 rounded active:bg-[#3a51ff] sm:flex ${
-              isNav ? "" : "hidden"
-            }`}
-            onClick={handleNav}
-          >
-            SignIn
-          </button>
+          {isAuth ? (
+            <button
+              className={`mt-2 w-full font-space bg-red-500] text-[#F5F7FA] px-4 py-1 rounded bg-red-500 active:bg-red-600 sm:flex ${
+                isNav ? "" : "hidden"
+              }`}
+              onClick={handleSignOut}
+            >
+              LogOut
+            </button>
+          ) : (
+            <NavLink to="/auth">
+              <button
+                className={`mt-2 w-full font-space bg-[#3A86FF] text-[#F5F7FA] px-4 py-1 rounded active:bg-[#3a51ff] sm:flex ${
+                  isNav ? "" : "hidden"
+                }`}
+                onClick={handleNav}
+              >
+                Join
+              </button>
+            </NavLink>
+          )}
         </div>
       </div>
     </>

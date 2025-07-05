@@ -1,7 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import supabase from "../lib/supabase-client";
+import { useNavigate } from "react-router-dom";
 
-let Drop = () => {
+let Drop = (props) => {
+  // Is auth
+  let { isAuth } = props;
+  console.log("Drop: ", isAuth);
+
+  let navigateTo = useNavigate();
+  useEffect(() => {
+    if (isAuth === false) {
+      navigateTo("/auth");
+    }
+  }, []);
+
   // Tag list
   const TAGS = [
     "Idea",
