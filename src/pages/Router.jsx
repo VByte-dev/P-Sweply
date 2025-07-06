@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import supabase from "../lib/supabase-client";
 
 // Pages
 import Navbar from "../components/Navbar";
@@ -7,7 +8,7 @@ import Drop from "./Drop";
 import Flow from "./Flow";
 import Archive from "./Archive";
 import Auth from "./Auth";
-import supabase from "../lib/supabase-client";
+import ResetPass from "./ResetPassword";
 
 let Router = () => {
   // User auth setup
@@ -54,6 +55,7 @@ let Router = () => {
           element={<Archive isAuth={isAuth} userId={userId} />}
         ></Route>
         <Route path="/auth" element={<Auth isAuth={isAuth} />}></Route>
+        <Route path="/resetpassword" element={<ResetPass />}></Route>
       </Routes>
     </>
   );
