@@ -75,9 +75,7 @@ let Auth = () => {
 
   // Handle forget password
   let handleForgetPass = async () => {
-    let { data, error } = await supabase.auth.resetPasswordForEmail(siEmail, {
-      
-    });
+    let { data, error } = await supabase.auth.resetPasswordForEmail(siEmail);
     if (error) {
       console.log(error.message);
       setSiErrMsg(error.message);
