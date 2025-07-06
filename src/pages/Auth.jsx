@@ -143,7 +143,7 @@ let Auth = () => {
 
             <div>
               <input
-                type="text"
+                type="email"
                 name=""
                 id=""
                 placeholder="Drop in your email"
@@ -154,7 +154,7 @@ let Auth = () => {
             </div>
             <div>
               <input
-                type="text"
+                type="password"
                 name=""
                 id=""
                 placeholder="Drop in your password"
@@ -215,7 +215,7 @@ let Auth = () => {
 
             <div>
               <input
-                type="text"
+                type="email"
                 name=""
                 id=""
                 placeholder="Drop in your email"
@@ -227,7 +227,7 @@ let Auth = () => {
 
             <div>
               <input
-                type="text"
+                type="password"
                 name=""
                 id=""
                 placeholder="Drop in your password"

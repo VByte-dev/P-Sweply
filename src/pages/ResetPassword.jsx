@@ -55,7 +55,7 @@ let ResetPass = () => {
           )}
 
           <input
-            type="password"
+            type="text"
             placeholder="Drop in your new password"
             value={newPass}
             onChange={(e) => setNewPass(e.target.value)}
