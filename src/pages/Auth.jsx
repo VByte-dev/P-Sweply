@@ -1,6 +1,6 @@
 import React, { use, useState } from "react";
 import supabase from "../lib/supabase-client";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 
 let Auth = () => {
   let navigateTo = useNavigate();
@@ -75,7 +75,9 @@ let Auth = () => {
 
   // Handle forget password
   let handleForgetPass = async () => {
-    let { data, error } = await supabase.auth.resetPasswordForEmail(siEmail);
+    let { data, error } = await supabase.auth.resetPasswordForEmail(siEmail, {
+      redirectTo: "https://sweply.vercel.app/resetpassword",
+    });
     if (error) {
       console.log(error.message);
       setSiErrMsg(error.message);
