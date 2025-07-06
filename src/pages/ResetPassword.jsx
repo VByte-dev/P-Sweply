@@ -12,7 +12,9 @@ let ResetPass = () => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       console.log("session:", session);
       if (!session) {
-        setMessage("⚠️ Your reset link is missing or expired. Please click the email link again.");
+        setMessage(
+          "⚠️ Your reset link is missing or expired. Please click the email link again."
+        );
       }
     });
   }, []);
