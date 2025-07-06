@@ -76,7 +76,7 @@ let Auth = () => {
   // Handle forget password
   let handleForgetPass = async () => {
     let { data, error } = await supabase.auth.resetPasswordForEmail(siEmail, {
-      redirectTo: "https://sweply.vercel.app/resetpassword",
+      
     });
     if (error) {
       console.log(error.message);
