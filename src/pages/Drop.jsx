@@ -84,6 +84,11 @@ let Drop = (props) => {
           ></textarea>
         </div>
         {/* Tagging thought */}
+        <div>
+          <h1 className="w-full text-center py-2 mt-6 rounded text-zinc-600 font-semibold font-space bg-zinc-100 border-1 border-zinc-200">
+            🏷️ Tag your thought
+          </h1>
+        </div>
         <div className="w-full mt-2 flex-wrap text-sm">
           {TAGS.map((v, i, a) => (
             <h1
