@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import supabase from "../lib/supabase-client";
 
 // Pages
+import Home from "./Home";
 import Navbar from "../components/Navbar";
 import Drop from "./Drop";
 import Flow from "./Flow";
@@ -42,6 +43,7 @@ let Router = () => {
         <Navbar isAuth={isAuth} />
       </div>
       <Routes>
+        <Route path="/" element={<Home />}></Route>
         <Route
           path="/drop"
           element={<Drop isAuth={isAuth} userId={userId} />}
