@@ -123,7 +123,7 @@ const Home = () => {
         <div className="bg-zinc-200 rounded-xl flex items-center justify-center overflow-hidden border-2 border-zinc-200 drop-shadow-2xl sm:mx-6 md:mx-8 lg:mx-10 xl:mx-10 ">
           <img
             src="/SweplyGIF.gif" 
-            alt="Sweply demo showing how it works."
+            alt="Sweply demo showing how it works"
             className="object-cover w-full h-full rounded"
           />
         </div>
