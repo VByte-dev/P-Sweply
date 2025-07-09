@@ -55,6 +55,7 @@ let Drop = (props) => {
             tags: tagInput,
             status: "active",
             user_id: userId,
+            email_id: emailId
           },
         ])
         .select();
