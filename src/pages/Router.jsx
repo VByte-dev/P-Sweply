@@ -15,6 +15,7 @@ let Router = () => {
   // User auth setup
   let [isAuth, setIsAuth] = useState(false);
   let [userId, setUserId] = useState("");
+  let [emailId, setEmailId] = useState("");
 
   let checkAuth = async () => {
     let { data, error } = await supabase.auth.getSession();
@@ -32,6 +33,7 @@ let Router = () => {
         setIsAuth(!!session);
         if (session) {
           setUserId(session.user.id);
+          setEmailId(session.user.email);
         }
       }
     );
@@ -46,7 +48,7 @@ let Router = () => {
         <Route path="/" element={<Home />}></Route>
         <Route
           path="/drop"
-          element={<Drop isAuth={isAuth} userId={userId} />}
+          element={<Drop isAuth={isAuth} userId={userId} emailId={emailId} />}
         ></Route>
         <Route
           path="/flow"

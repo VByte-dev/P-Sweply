@@ -145,7 +145,7 @@ let Auth = () => {
               <input
                 type="email"
                 name=""
-                id=""
+                id="suE"
                 placeholder="Drop in your email"
                 className="border-2 rounded-md my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
                 onChange={onChangeSuEmail}
@@ -156,7 +156,7 @@ let Auth = () => {
               <input
                 type="password"
                 name=""
-                id=""
+                id="suP"
                 placeholder="Drop in your password"
                 className="border-2 rounded-md my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
                 onChange={onChangeSuPass}
@@ -217,7 +217,7 @@ let Auth = () => {
               <input
                 type="email"
                 name=""
-                id=""
+                id="siE"
                 placeholder="Drop in your email"
                 className="border-2 rounded-md my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
                 onChange={onChangeSiEmail}
@@ -229,7 +229,7 @@ let Auth = () => {
               <input
                 type="password"
                 name=""
-                id=""
+                id="siP"
                 placeholder="Drop in your password"
                 className="border-2 rounded-md my-2 bg-white border-zinc-100 px-6 py-2 w-full font-space outline-none text-sm md:text-base"
                 onChange={onChangeSiPass}

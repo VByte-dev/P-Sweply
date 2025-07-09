@@ -4,8 +4,9 @@ import { useNavigate } from "react-router-dom";
 
 let Drop = (props) => {
   // Destructuring the props
-  let { isAuth, userId } = props;
+  let { isAuth, userId, emailId } = props;
   // console.log("Drop: ", isAuth);
+  // console.log(emailId);
 
   let navigateTo = useNavigate();
   useEffect(() => {
