@@ -7,20 +7,18 @@ import ThoughtCard from "../components/ThoughtCard";
 // import FocusCard from "../components/FocusCard"; - Underdevelopment
 
 let Flow = (props) => {
-  // Destructuring the props
-  let { isAuth, userId } = props;
-  // console.log("Flow: ", isAuth);
+  let { isAuth, userId, loading } = props;
 
   let navigateTo = useNavigate();
   useEffect(() => {
-    if (isAuth === false) {
+    if (!loading && isAuth === false) {
       navigateTo("/auth");
     }
-  }, []);
+  }, [loading, isAuth, navigateTo]);
 
   // Fetching active data from the DB
   let [thought, setThought] = useState([]);
-  let [loading, setLoading] = useState(true);
+  let [fetching, setFetching] = useState(true);
 
   let fetchThoughts = async () => {
     let { data, error } = await supabase
@@ -33,20 +31,16 @@ let Flow = (props) => {
       console.log(error.message);
     } else {
       setThought(data);
-      setLoading(false);
+      setFetching(false);
     }
   };
+
   useEffect(() => {
-    fetchThoughts();
-  }, []);
+    if (!loading && isAuth) {
+      fetchThoughts();
+    }
+  }, [loading, isAuth]);
 
-  // // Handling filtered tags - The thoughts tags from the focuscard - Underdevelopment
-  // let [fTags, setFTags] = useState([]);
-  // let handleFilTags = (v) => {
-  //   setFTags(v);
-  // }
-
-  // Handling clearall
   let handleClearAll = async () => {
     let { error } = await supabase
       .from("thoughts")
@@ -61,72 +55,50 @@ let Flow = (props) => {
     }
   };
 
+  if (loading || fetching) {
+    return (
+      <h1 className="font-bricolage border-1 border-zinc-200 bg-zinc-100 rounded text-center py-6 text-zinc-500 mt-16">
+        🧠 Loading your latest thoughts…
+      </h1>
+    );
+  }
+
   return (
     <>
       <div className="selection:bg-amber-200 selection:text-black">
-        {/* Part-1 */}
+        {/* Sweep All btn */}
         <div className="flex mt-6 sm:mt-12 justify-end gap-4">
-          {/* Focus btn
-          <div>
-            <button className="bg-[#3A86FF] active:bg-[#3a51ff] text-white rounded  px-3 text-sm py-1 mt-3 font-space border"> - Underdevelopment
-              Focus
-            </button>
-          </div> */}
-          {/* Sweep All btn */}
-          <div className="">
-            <button
-              className="bg-[#27ae60] active:bg-[#229954] text-white rounded px-3 text-sm py-1 mt-3 font-space"
-              onClick={handleClearAll}
-            >
-              Sweep All
-            </button>
-          </div>
+          <button
+            className="bg-[#27ae60] active:bg-[#229954] text-white rounded px-3 text-sm py-1 mt-3 font-space"
+            onClick={handleClearAll}
+          >
+            Sweep All
+          </button>
         </div>
 
-        {/* Focus card
-        <div className="mt-8">
-          <FocusCard fTags={fTags} />
-        </div> */}
-
-        {/* Part-2 */}
-        <div>
-          {loading ? (
-            <h1 className="font-bricolage border-1 border-zinc-200 bg-zinc-100 rounded text-center py-6 text-zinc-500 mt-16">
-              🧠 Loading your latest thoughts…
+        {/* Thoughts display */}
+        {thought.length === 0 ? (
+          <div className="bg-zinc-50 rounded-lg border-2 border-zinc-200 px-3 py-3 sm:px-4 sm:py-4 my-6 motion-preset-focus mt-16">
+            <h1 className="text-zinc-600 text-center my-2 font-bricolage ">
+              🧹 All clear. Drop in your next thought.
             </h1>
-          ) : (
-            <div>
-              {/* Decider - Empty placeholder or Flow card*/}
-              {thought.length === 0 ? (
-                // Empty placeholder
-                <div className="bg-zinc-50 rounded-lg border-2 border-zinc-200 px-3 py-3 sm:px-4 sm:py-4 my-6 motion-preset-focus mt-16">
-                  <h1 className="text-zinc-600 text-center my-2 font-bricolage ">
-                    🧹 All clear. Drop in your next thought.
-                  </h1>
-                  <h1 className="text-zinc-600 text-center my-2 font-space ">
-                    {" "}
-                    This is your live space. Drop what’s on your mind, reflect,
-                    and sweep them away when you’re ready.
-                  </h1>
-                </div>
-              ) : (
-                // Flow card
-                <div className="mt-0 sm:mt-10">
-                  {thought.map((v, i, a) => {
-                    return (
-                      <ThoughtCard
-                        data={v}
-                        userId={userId}
-                        refreshThoughts={fetchThoughts}
-                        key={i}
-                      />
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+            <h1 className="text-zinc-600 text-center my-2 font-space ">
+              This is your live space. Drop what’s on your mind, reflect, and
+              sweep them away when you’re ready.
+            </h1>
+          </div>
+        ) : (
+          <div className="mt-0 sm:mt-10">
+            {thought.map((v, i) => (
+              <ThoughtCard
+                data={v}
+                userId={userId}
+                refreshThoughts={fetchThoughts}
+                key={i}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

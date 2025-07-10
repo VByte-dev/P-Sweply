@@ -4,16 +4,15 @@ import { useNavigate } from "react-router-dom";
 
 let Drop = (props) => {
   // Destructuring the props
-  let { isAuth, userId, emailId } = props;
-  // console.log("Drop: ", isAuth);
-  // console.log(emailId);
+  let { isAuth, loading, userId, emailId } = props;
 
   let navigateTo = useNavigate();
+
   useEffect(() => {
-    if (isAuth === false) {
+    if (!loading && isAuth === false) {
       navigateTo("/auth");
     }
-  }, []);
+  }, [loading, isAuth, navigateTo]);
 
   // Tag list
   const TAGS = [
@@ -37,7 +36,7 @@ let Drop = (props) => {
   let [tagInput, setTagInput] = useState([]);
   let handleTag = (v) => {
     if (tagInput.includes(v)) {
-      let rTagInput = tagInput.filter((val, i, a) => val !== v);
+      let rTagInput = tagInput.filter((val) => val !== v);
       setTagInput(rTagInput);
     } else {
       setTagInput([...tagInput, v]);
@@ -55,7 +54,7 @@ let Drop = (props) => {
             tags: tagInput,
             status: "active",
             user_id: userId,
-            email_id: emailId
+            email_id: emailId,
           },
         ])
         .select();
@@ -69,17 +68,24 @@ let Drop = (props) => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="text-center mt-10 font-space text-zinc-500">
+        Loading...
+      </div>
+    );
+  }
+
   return (
     <>
-      <div className="rounded-xl bg-zinc-50 border-2 border-zinc-200  px-6 py-6 text-md mt-24 sm:mt-32 selection:bg-amber-200 selection:text-black">
+      <div className="rounded-xl bg-zinc-50 border-2 border-zinc-200 px-6 py-6 text-md mt-24 sm:mt-32 selection:bg-amber-200 selection:text-black">
         {/* Thought input */}
         <div>
           <textarea
-            name=""
             id="thoughtInput"
             placeholder="What’s on your mind?"
             value={thoughtInput}
-            className="bg-white text-[#1F1F1F] h-32 w-full rounded-lg  py-3 px-3 sm:px-6 font-space outline-none border-2 border-zinc-200 resize-none"
+            className="bg-white text-[#1F1F1F] h-32 w-full rounded-lg py-3 px-3 sm:px-6 font-space outline-none border-2 border-zinc-200 resize-none"
             onChange={(e) => {
               handleThought(e.target.value);
             }}
@@ -92,15 +98,15 @@ let Drop = (props) => {
           </h1>
         </div>
         <div className="w-full mt-2 flex-wrap text-sm">
-          {TAGS.map((v, i, a) => (
+          {TAGS.map((v, i) => (
             <h1
               key={i}
-              className={`text-[#1F1F1F] inline-block rounded py-1 px-4 mr-2 sm:mr-4 my-2 font-space cursor-pointer  ${
+              className={`text-[#1F1F1F] inline-block rounded py-1 px-4 mr-2 sm:mr-4 my-2 font-space cursor-pointer ${
                 tagInput.includes(v)
                   ? "bg-black text-white border-1 border-black"
                   : "bg-zinc-100 border-1 border-zinc-200"
               }`}
-              onClick={(e) => handleTag(v)}
+              onClick={() => handleTag(v)}
             >
               {v}
             </h1>
@@ -109,7 +115,7 @@ let Drop = (props) => {
         {/* Drop button */}
         <div>
           <button
-            className="w-full bg-[#3A86FF] font-space text-white rounded py-1 mt-6 active:bg-[#3a51ff] "
+            className="w-full bg-[#3A86FF] font-space text-white rounded py-1 mt-6 active:bg-[#3a51ff]"
             onClick={handleDrop}
           >
             Drop

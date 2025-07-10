@@ -12,54 +12,71 @@ import Auth from "./Auth";
 import ResetPass from "./ResetPassword";
 
 let Router = () => {
-  // User auth setup
   let [isAuth, setIsAuth] = useState(false);
+  let [loading, setLoading] = useState(true);
   let [userId, setUserId] = useState("");
   let [emailId, setEmailId] = useState("");
 
   let checkAuth = async () => {
     let { data, error } = await supabase.auth.getSession();
     setIsAuth(!!data.session);
-
+    if (data.session) {
+      setUserId(data.session.user.id);
+      setEmailId(data.session.user.email);
+    }
+    setLoading(false);
     if (error) {
       console.log(error.message);
     }
   };
+
   useEffect(() => {
     checkAuth();
-
-    let { data: subscribtion, error } = supabase.auth.onAuthStateChange(
+    let { data: subscription } = supabase.auth.onAuthStateChange(
       (_event, session) => {
         setIsAuth(!!session);
         if (session) {
           setUserId(session.user.id);
           setEmailId(session.user.email);
+        } else {
+          setUserId("");
+          setEmailId("");
         }
       }
     );
-    return () => subscribtion.unsubscribe();
+    return () => subscription.unsubscribe();
   }, []);
+
   return (
     <>
       <div id="navbar" className="mt-10 sm:mt-12">
         <Navbar isAuth={isAuth} />
       </div>
       <Routes>
-        <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home />} />
         <Route
           path="/drop"
-          element={<Drop isAuth={isAuth} userId={userId} emailId={emailId} />}
-        ></Route>
+          element={
+            <Drop
+              isAuth={isAuth}
+              loading={loading}
+              userId={userId}
+              emailId={emailId}
+            />
+          }
+        />
         <Route
           path="/flow"
-          element={<Flow isAuth={isAuth} userId={userId} />}
-        ></Route>
+          element={<Flow isAuth={isAuth} loading={loading} userId={userId} />}
+        />
         <Route
           path="/archive"
-          element={<Archive isAuth={isAuth} userId={userId} />}
-        ></Route>
-        <Route path="/auth" element={<Auth isAuth={isAuth} />}></Route>
-        <Route path="/resetpassword" element={<ResetPass />}></Route>
+          element={
+            <Archive isAuth={isAuth} loading={loading} userId={userId} />
+          }
+        />
+        <Route path="/auth" element={<Auth isAuth={isAuth} />} />
+        <Route path="/resetpassword" element={<ResetPass />} />
       </Routes>
     </>
   );
