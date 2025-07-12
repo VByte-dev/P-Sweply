@@ -68,6 +68,21 @@ const Home = () => {
           Clear & Reflect
         </button>
       </div>
+      {/* Product hunt */}
+      <div className="flex justify-center mt-10 sm:mt-12 md:mt-14 lg:mt-16">
+        <a
+          href="https://www.producthunt.com/products/sweply-2/reviews?utm_source=badge-product_review&utm_medium=badge&utm_source=badge-sweply&#0045;2"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block"
+        >
+          <img
+            src="https://api.producthunt.com/widgets/embed-image/v1/product_review.svg?product_id=1086429&theme=light"
+            alt="Sweply - From scattered ideas to mindful clarity - in seconds | Product Hunt"
+            className="w-40 sm:w-48 md:w-56 lg:w-60 h-auto"
+          />
+        </a>
+      </div>
 
       {/* 🪶 How it Works */}
       <section className="mt-16 sm:mt-20 md:mt-24 lg:mt-28 sm:mx-6 md:mx-10 lg:mx-20 xl:mx-40">
@@ -122,7 +137,7 @@ const Home = () => {
         </h2>
         <div className="bg-zinc-200 rounded-xl flex items-center justify-center overflow-hidden border-2 border-zinc-200 drop-shadow-2xl sm:mx-6 md:mx-8 lg:mx-10 xl:mx-10 ">
           <img
-            src="/SweplyGIF.gif" 
+            src="/SweplyGIF.gif"
             alt="Sweply demo showing how it works"
             className="object-cover w-full h-full rounded"
           />
